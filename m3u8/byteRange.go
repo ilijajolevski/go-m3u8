@@ -8,8 +8,8 @@ import (
 
 // ByteRange represents sub range of a resource
 type ByteRange struct {
-	Length *int
-	Start  *int
+	Length *uint64
+	Start  *uint64
 }
 
 // NewByteRange parses a text line in playlist file and returns a *ByteRange
@@ -20,7 +20,8 @@ func NewByteRange(text string) (*ByteRange, error) {
 
 	values := strings.Split(text, "@")
 
-	lengthValue, err := strconv.Atoi(values[0])
+	lengthValue, err := strconv.ParseUint(values[0], 10, 64)
+
 	if err != nil {
 		return nil, err
 	}
@@ -28,7 +29,7 @@ func NewByteRange(text string) (*ByteRange, error) {
 	br := ByteRange{Length: &lengthValue}
 
 	if len(values) >= 2 {
-		startValue, err := strconv.Atoi(values[1])
+		startValue, err := strconv.ParseUint(values[1], 10, 64)
 		if err != nil {
 			return &br, err
 		}

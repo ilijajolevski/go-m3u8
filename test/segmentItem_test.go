@@ -35,8 +35,8 @@ func TestSegmentItem_Parse(t *testing.T) {
 		Segment:  "test.ts",
 		Comment:  pointer.ToString("anything"),
 		ByteRange: &m3u8.ByteRange{
-			Length: pointer.ToInt(4500),
-			Start:  pointer.ToInt(600),
+			Length: pointer.ToUint64(4500),
+			Start:  pointer.ToUint64(600),
 		},
 	}
 
@@ -47,7 +47,7 @@ func TestSegmentItem_Parse(t *testing.T) {
 		Segment:  "test.ts",
 		Comment:  pointer.ToString("anything"),
 		ByteRange: &m3u8.ByteRange{
-			Length: pointer.ToInt(4500),
+			Length: pointer.ToUint64(4500),
 		},
 	}
 

@@ -16,8 +16,8 @@ func TestByteRange_Parse(t *testing.T) {
 	assert.NotNil(t, br.Length)
 	assert.NotNil(t, br.Start)
 
-	assert.Equal(t, 4500, *br.Length)
-	assert.Equal(t, 600, *br.Start)
+	assert.Equal(t, uint64(0x1194), *br.Length)
+	assert.Equal(t, uint64(0x258), *br.Start)
 
 	assertToString(t, text, br)
 }
@@ -30,22 +30,22 @@ func TestByteRange_Parse_2(t *testing.T) {
 	assert.NotNil(t, br.Length)
 	assert.Nil(t, br.Start)
 
-	assert.Equal(t, 4500, *br.Length)
+	assert.Equal(t, uint64(0x1194), *br.Length)
 
 	assertToString(t, text, br)
 }
 
 func TestByteRange_New(t *testing.T) {
 	br := &m3u8.ByteRange{
-		Length: pointer.ToInt(4500),
-		Start:  pointer.ToInt(200),
+		Length: pointer.ToUint64(4500),
+		Start:  pointer.ToUint64(200),
 	}
 	assert.Equal(t, "4500@200", br.String())
 }
 
 func TestByteRange_New_2(t *testing.T) {
 	br := &m3u8.ByteRange{
-		Length: pointer.ToInt(4500),
+		Length: pointer.ToUint64(4500),
 	}
 	assert.Equal(t, "4500", br.String())
 }
